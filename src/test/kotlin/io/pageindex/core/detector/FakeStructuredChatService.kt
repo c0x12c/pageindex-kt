@@ -3,8 +3,8 @@ package io.pageindex.core.detector
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import io.pageindex.exception.PageIndexException
-import io.pageindex.api.StructuredChatService
+import io.pageindex.api.PageIndexException
+import io.pageindex.core.StructuredChatService
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.PageIndexError
 import io.pageindex.core.util.StructuredResponseJson

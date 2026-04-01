@@ -2,9 +2,9 @@ package io.pageindex.core.retriever
 
 import arrow.core.Either
 import arrow.core.right
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.NodeEmbeddingService
-import io.pageindex.api.NodeRetriever
+import io.pageindex.core.NodeRetriever
 import io.pageindex.api.model.DocumentTree
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.LlmRole

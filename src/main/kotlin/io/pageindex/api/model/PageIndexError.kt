@@ -1,6 +1,6 @@
 package io.pageindex.api.model
 
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 
 enum class PageIndexError(
   val statusCode: Int,

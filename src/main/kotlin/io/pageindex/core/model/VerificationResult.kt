@@ -1,4 +1,4 @@
-package io.pageindex.api.model
+package io.pageindex.core.model
 
 data class VerificationResult(
   val accuracy: Double,

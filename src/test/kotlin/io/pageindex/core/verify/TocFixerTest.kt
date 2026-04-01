@@ -1,6 +1,6 @@
 package io.pageindex.core.verify
 
-import io.pageindex.api.model.IncorrectItem
+import io.pageindex.core.model.IncorrectItem
 import io.pageindex.api.model.ParsedPage
 import io.pageindex.api.model.TocEntry
 import io.pageindex.core.detector.FakeLlmClient

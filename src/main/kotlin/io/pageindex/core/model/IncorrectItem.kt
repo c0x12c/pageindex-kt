@@ -1,4 +1,6 @@
-package io.pageindex.api.model
+package io.pageindex.core.model
+
+import io.pageindex.api.model.TocEntry
 
 data class IncorrectItem(
   val entry: TocEntry,

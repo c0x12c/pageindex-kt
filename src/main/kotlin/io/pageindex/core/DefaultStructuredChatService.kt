@@ -3,9 +3,8 @@ package io.pageindex.core
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.LlmClient
-import io.pageindex.api.StructuredChatService
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.LlmRole
 import io.pageindex.api.model.PageIndexError

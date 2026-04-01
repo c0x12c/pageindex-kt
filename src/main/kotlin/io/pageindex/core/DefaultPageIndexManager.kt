@@ -4,13 +4,10 @@ import arrow.core.Either
 import arrow.core.getOrElse
 import arrow.core.left
 import arrow.core.right
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.DocumentTreeStore
 import io.pageindex.api.LlmClient
-import io.pageindex.api.NodeRetriever
 import io.pageindex.api.PageIndexManager
-import io.pageindex.api.StructuredChatService
-import io.pageindex.api.TreeIndexBuilder
 import io.pageindex.api.model.DocumentQueryResult
 import io.pageindex.api.model.DocumentTree
 import io.pageindex.api.model.IndexingConfig
@@ -18,7 +15,7 @@ import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.LlmRole
 import io.pageindex.api.model.PageIndexError
 import io.pageindex.api.model.ParsedPage
-import io.pageindex.api.model.QaResult
+import io.pageindex.core.model.QaResult
 import io.pageindex.api.model.RetrievedContext
 import java.util.UUID
 

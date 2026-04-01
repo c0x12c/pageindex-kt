@@ -5,12 +5,12 @@ import io.pageindex.api.PromptProvider
 import io.pageindex.api.StructureDetector
 import io.pageindex.api.model.IndexingConfig
 import io.pageindex.api.model.IndexingMethod
-import io.pageindex.api.model.LlmField
+import io.pageindex.core.model.LlmField
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.LlmRole
 import io.pageindex.api.model.ParsedPage
 import io.pageindex.api.model.PromptName
-import io.pageindex.api.model.PromptVar
+import io.pageindex.core.model.PromptVar
 import io.pageindex.api.model.StructureDetectionResult
 import io.pageindex.api.model.TocEntry
 import io.pageindex.core.prompt.PromptTemplate

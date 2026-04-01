@@ -1,4 +1,4 @@
-package io.pageindex.api.model
+package io.pageindex.core.model
 
 object LlmField {
   const val TOC_DETECTED = "toc_detected"

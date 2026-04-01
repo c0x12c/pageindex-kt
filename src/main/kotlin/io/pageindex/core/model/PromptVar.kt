@@ -1,4 +1,4 @@
-package io.pageindex.api.model
+package io.pageindex.core.model
 
 object PromptVar {
   const val PAGE_TEXT = "page_text"

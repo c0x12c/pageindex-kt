@@ -2,15 +2,15 @@ package io.pageindex.core.verify
 
 import io.pageindex.api.LlmClient
 import io.pageindex.api.PromptProvider
-import io.pageindex.api.model.IncorrectItem
-import io.pageindex.api.model.LlmField
+import io.pageindex.core.model.IncorrectItem
+import io.pageindex.core.model.LlmField
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.LlmRole
 import io.pageindex.api.model.ParsedPage
 import io.pageindex.api.model.PromptName
-import io.pageindex.api.model.PromptVar
+import io.pageindex.core.model.PromptVar
 import io.pageindex.api.model.TocEntry
-import io.pageindex.api.model.VerificationResult
+import io.pageindex.core.model.VerificationResult
 import io.pageindex.core.prompt.PromptTemplate
 import io.pageindex.core.util.LlmJsonParser
 import io.pageindex.core.util.response.VerificationResponse

@@ -1,7 +1,7 @@
 package io.pageindex.api
 
 import arrow.core.Either
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.model.DocumentQueryResult
 import io.pageindex.api.model.DocumentTree
 import io.pageindex.api.model.IndexingConfig

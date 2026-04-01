@@ -26,23 +26,30 @@ PageIndex is a Kotlin/JVM library for LLM-powered hierarchical document indexing
 
 ### Package Layout
 
-- `io.pageindex.api/` — Public interfaces and data models. All new interfaces go here.
+- `io.pageindex.api/` — Public interfaces, data models, and `PageIndexException`. All new public interfaces go here.
+- `io.pageindex.api.model/` — Public data models (DocumentTree, ParsedPage, IndexingConfig, etc.).
 - `io.pageindex.core/` — Default implementations. All new implementations go here.
-- `io.pageindex.exception/` — `PageIndexException` with HTTP status codes and `PageIndexError` enum.
+- `io.pageindex.core.model/` — Internal data models (not part of public API).
+- `io.pageindex.core.llm/` — `LiteLlmClient` multi-provider LLM client.
 
-### Key Interfaces (api/)
+### Public Interfaces (api/)
 
 | Interface | Purpose |
 |---|---|
 | `PageIndexManager` | Main entry point: `buildAndSave`, `search`, `query` |
-| `TreeIndexBuilder` | Builds hierarchical index from `ParsedPage` list |
-| `StructureDetector` | Detects document structure (TOC, headers, etc.) |
-| `NodeRetriever` | LLM-based node selection from tree |
 | `LlmClient` | Chat interface — implement for any LLM provider |
-| `StructuredChatService` | Wraps LlmClient to return parsed JSON objects |
+| `StructureDetector` | Detects document structure (TOC, headers, etc.) |
 | `NodeEmbeddingService` | Generates embeddings for tree nodes |
 | `DocumentTreeStore` | Persistence layer for `DocumentTree` |
 | `PromptProvider` | Template-based prompt management |
+
+### Internal Interfaces (core/)
+
+| Interface | Purpose |
+|---|---|
+| `TreeIndexBuilder` | Builds hierarchical index from `ParsedPage` list |
+| `NodeRetriever` | LLM-based node selection from tree |
+| `StructuredChatService` | Wraps LlmClient to return parsed JSON objects |
 
 ### Structure Detection Chain
 

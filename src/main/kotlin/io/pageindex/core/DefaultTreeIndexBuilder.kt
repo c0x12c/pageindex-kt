@@ -3,10 +3,9 @@ package io.pageindex.core
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.NodeEmbeddingService
 import io.pageindex.api.StructureDetector
-import io.pageindex.api.TreeIndexBuilder
 import io.pageindex.api.model.DocumentTree
 import io.pageindex.api.model.IndexingConfig
 import io.pageindex.api.model.PageIndexError

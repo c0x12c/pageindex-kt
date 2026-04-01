@@ -251,14 +251,15 @@ When PageIndex builds an index, the tree looks like this:
 ## Architecture
 
 ```
-io.pageindex.api/          # Public interfaces and models
-io.pageindex.core/         # Default implementations
+io.pageindex.api/          # Public interfaces, models, and PageIndexException
+io.pageindex.core/         # Default implementations (internal)
+  model/                   # Internal data models (not part of public API)
   detector/                # Structure detection (regex, headers, LLM)
   retriever/               # Node retrieval (LLM-based, hybrid BM25+embedding)
+  llm/                     # LiteLlmClient (multi-provider LLM client)
   prompt/                  # Prompt template system
   verify/                  # TOC verification and fixing
   util/                    # JSON parsing, token counting, case conversion
-io.pageindex.exception/    # PageIndexException
 ```
 
 ## Requirements

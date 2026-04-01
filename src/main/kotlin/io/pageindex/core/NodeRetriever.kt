@@ -1,7 +1,7 @@
-package io.pageindex.api
+package io.pageindex.core
 
 import arrow.core.Either
-import io.pageindex.exception.PageIndexException
+import io.pageindex.api.PageIndexException
 import io.pageindex.api.model.DocumentTree
 import io.pageindex.api.model.LlmMessage
 import io.pageindex.api.model.RetrievedContext

@@ -1,4 +1,4 @@
-package io.pageindex.api.model
+package io.pageindex.core.model
 
 data class SummaryEntry(
   val nodeId: String?,

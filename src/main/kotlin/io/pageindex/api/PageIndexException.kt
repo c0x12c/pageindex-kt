@@ -1,4 +1,4 @@
-package io.pageindex.exception
+package io.pageindex.api
 
 import java.io.Serializable
 

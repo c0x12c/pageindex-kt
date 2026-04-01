@@ -3,12 +3,9 @@ package io.pageindex.core
 import io.pageindex.api.DocumentTreeStore
 import io.pageindex.api.LlmClient
 import io.pageindex.api.NodeEmbeddingService
-import io.pageindex.api.NodeRetriever
 import io.pageindex.api.PageIndexManager
 import io.pageindex.api.PromptProvider
 import io.pageindex.api.StructureDetector
-import io.pageindex.api.StructuredChatService
-import io.pageindex.api.TreeIndexBuilder
 import io.pageindex.core.detector.ChainedStructureDetector
 import io.pageindex.core.detector.FlatPagesFallback
 import io.pageindex.core.detector.LlmStructureDetector
