@@ -5,7 +5,7 @@
 [![JDK](https://img.shields.io/badge/JDK-21%2B-green.svg)](https://adoptium.net/)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0%2B-purple.svg)](https://kotlinlang.org/)
 
-LLM-powered hierarchical document indexing and retrieval for the JVM. Inspired by [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex) — reimplemented in Kotlin with a modular, interface-driven architecture.
+LLM-powered hierarchical document indexing and retrieval for the JVM. Built with Kotlin, modular and interface-driven. Originally inspired by [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex).
 
 PageIndex builds a tree-structured index from documents (like a table of contents), then uses LLM reasoning to navigate it and find relevant sections. No vector database. No chunking. Just structure + reasoning.
 
@@ -17,7 +17,7 @@ PageIndex builds a tree-structured index from documents (like a table of content
                     └──────┬───────┘
                            │
                     ┌──────▼───────┐
-                    │  Structure   │    Tries: TOC regex → Headers → LLM detection → Fallback
+                    │  Structure   │    Tries: TOC regex → Headers → Regex discovery → LLM → Fallback
                     │  Detection   │
                     └──────┬───────┘
                            │
@@ -48,8 +48,9 @@ PageIndex tries multiple detection strategies in order:
 | Method | How |
 |---|---|
 | `TOC_WITH_PAGES` | Regex-based TOC detection (dot leaders, dash leaders, tab-separated) |
+| `HEADER_BASED` | Detects markdown-style headers (`# ## ###`) via regex |
+| `REGEX_DISCOVERED` | LLM discovers regex patterns from page samples, then applies them |
 | `TOC_WITHOUT_PAGES` | LLM extracts TOC that lacks page numbers, then matches titles to pages |
-| `HEADER_BASED` | Detects markdown-style headers (`# ## ###`) |
 | `LLM_DETECTED` | LLM analyzes page groups to detect structure via map-reduce |
 | `FLAT_PAGES` | Fallback: chunks pages by text length |
 
@@ -151,6 +152,8 @@ val pageIndex = PageIndex.create {
   llmClient = MyLlmClient(apiKey)
   embeddingService = MyEmbeddingService(apiKey)  // default: NoOpEmbeddingService
   documentTreeStore = MyDatabaseStore()          // default: InMemoryDocumentTreeStore
+  structureDetector = MyDetector()               // default: full detection chain
+  regexPatternCache = MyRedisCache()             // default: none (no caching)
   maxNodes = 10                                  // default: 5
 }
 ```
@@ -186,7 +189,8 @@ Paste markdown, build a tree index, then query it. Supports OpenAI, Anthropic, a
 | `LlmClient` | Chat with any LLM (OpenAI, Claude, Gemini, local) |
 | `NodeEmbeddingService` | Generate text embeddings (for hybrid retrieval) |
 | `DocumentTreeStore` | Persist/load document trees (database, file, memory) |
-| `ParsedPageStore` | Persist/load parsed pages (optional) |
+| `StructureDetector` | Custom document structure detection (optional) |
+| `RegexPatternCache` | Cache LLM-discovered regex patterns across documents (optional) |
 
 ## Compared to Vector-Based RAG
 
@@ -253,13 +257,18 @@ When PageIndex builds an index, the tree looks like this:
 ```
 io.pageindex.api/          # Public interfaces, models, and PageIndexException
 io.pageindex.core/         # Default implementations (internal)
-  model/                   # Internal data models (not part of public API)
-  detector/                # Structure detection (regex, headers, LLM)
-  retriever/               # Node retrieval (LLM-based, hybrid BM25+embedding)
+  cache/                   # RegexPatternCache implementations
+  chat/                    # Structured LLM chat (JSON-parsed responses)
+  detector/                # Structure detection (regex, headers, LLM, regex discovery)
+  embedding/               # Embedding service implementations
+  indexer/                 # Tree building pipeline
   llm/                     # LiteLlmClient (multi-provider LLM client)
+  model/                   # Internal data models (not part of public API)
   prompt/                  # Prompt template system
-  verify/                  # TOC verification and fixing
+  retriever/               # Node retrieval (LLM-based, hybrid BM25+embedding)
+  store/                   # Persistence (InMemoryDocumentTreeStore)
   util/                    # JSON parsing, token counting, case conversion
+  verify/                  # TOC verification and fixing
 ```
 
 ## Requirements
@@ -272,11 +281,9 @@ io.pageindex.core/         # Default implementations (internal)
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
 
-## Inspired By
+## Origin
 
-This project is a Kotlin/JVM reimplementation of [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex), a Python library for vectorless, reasoning-based RAG that achieved 98.7% accuracy on the FinanceBench benchmark.
-
-Key differences from the original:
+Originally inspired by [VectifyAI/PageIndex](https://github.com/VectifyAI/PageIndex), a Python library for vectorless, reasoning-based RAG. This project has since grown into a standalone library with its own architecture and features.
 
 | | VectifyAI/PageIndex | This Project |
 |---|---|---|
@@ -284,8 +291,10 @@ Key differences from the original:
 | Architecture | Single-file functions | Interface-driven, modular |
 | LLM support | LiteLLM (Python) | Built-in `LiteLlmClient` + pluggable `LlmClient` interface |
 | Error handling | Exceptions | Arrow `Either<L, R>` |
-| Retrieval | External agent loop | Built-in `NodeRetriever` |
+| Structure detection | Fixed strategies | 6-method chain with LLM regex discovery |
+| Retrieval | External agent loop | Built-in `NodeRetriever` with hybrid BM25+embedding option |
 | Embeddings | None | Optional `NodeEmbeddingService` |
+| Extensibility | None | Pluggable interfaces for detection, storage, caching |
 | Testing | None | JUnit 5 + MockK |
 
 ## License
