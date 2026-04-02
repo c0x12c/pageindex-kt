@@ -3,16 +3,16 @@
  *
  * Shows how to build a document index and query it.
  *
- * Run: copy this file into your project and add the pageindex-jvm dependency.
+ * Run: copy this file into your project and add the pageindex-kt dependency.
  * Set LLM_API_KEY env variable before running.
  */
 
-import io.pageindex.api.model.IndexingConfig
-import io.pageindex.api.model.LlmMessage
-import io.pageindex.api.model.LlmRole
-import io.pageindex.api.model.ParsedPage
-import io.pageindex.core.PageIndex
-import io.pageindex.core.llm.LiteLlmClient
+import com.c0x12c.pageindex.api.model.IndexingConfig
+import com.c0x12c.pageindex.api.model.LlmMessage
+import com.c0x12c.pageindex.api.model.LlmRole
+import com.c0x12c.pageindex.api.model.ParsedPage
+import com.c0x12c.pageindex.core.PageIndex
+import com.c0x12c.pageindex.core.llm.LiteLlmClient
 import kotlinx.coroutines.runBlocking
 import java.util.UUID
 

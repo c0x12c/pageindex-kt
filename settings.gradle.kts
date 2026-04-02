@@ -1,1 +1,2 @@
-rootProject.name = "pageindex-jvm"
+rootProject.name = "pageindex-kt"
+include("benchmark")

@@ -3,7 +3,7 @@ plugins {
   `maven-publish`
 }
 
-group = "io.pageindex"
+group = "com.c0x12c"
 version = "0.1.0"
 
 repositories {

@@ -3,11 +3,11 @@ plugins {
     application
 }
 
-group = "io.pageindex.demo"
+group = "com.c0x12c.pageindex.demo"
 version = "1.0.0"
 
 application {
-    mainClass.set("io.pageindex.demo.ApplicationKt")
+    mainClass.set("com.c0x12c.pageindex.demo.ApplicationKt")
 }
 
 repositories {
@@ -18,7 +18,7 @@ val ktorVersion = "3.0.2"
 
 dependencies {
     // PageIndex library (resolved via composite build from root project)
-    implementation("io.pageindex:pageindex-jvm:0.1.0")
+    implementation("com.c0x12c:pageindex-kt:0.1.0")
 
     // Ktor server
     implementation("io.ktor:ktor-server-core:$ktorVersion")

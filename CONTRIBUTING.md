@@ -21,7 +21,7 @@ Thanks for your interest in PageIndex!
 
 - Kotlin 2.0+ idioms
 - Use `Either` for error handling (no thrown exceptions in business logic)
-- Interfaces in `io.pageindex.api`, implementations in `io.pageindex.core`
+- Interfaces in `com.c0x12c.pageindex.api`, implementations in `com.c0x12c.pageindex.core`
 
 ## Reporting Issues
 

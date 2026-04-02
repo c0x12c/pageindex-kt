@@ -1,6 +1,6 @@
-# PageIndex JVM
+# PageIndex KT
 
-[![Build](https://github.com/c0x12c/pageindex-jvm/actions/workflows/build.yml/badge.svg)](https://github.com/c0x12c/pageindex-jvm/actions/workflows/build.yml)
+[![Build](https://github.com/c0x12c/pageindex-kt/actions/workflows/build.yml/badge.svg)](https://github.com/c0x12c/pageindex-kt/actions/workflows/build.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![JDK](https://img.shields.io/badge/JDK-21%2B-green.svg)](https://adoptium.net/)
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.0%2B-purple.svg)](https://kotlinlang.org/)
@@ -104,20 +104,12 @@ The indexing pipeline has 4 stages:
 
 ### 1. Add Dependency
 
-Add JitPack repository and the dependency:
+Add the dependency from Maven Central:
 
 ```kotlin
-// settings.gradle.kts
-dependencyResolutionManagement {
-  repositories {
-    mavenCentral()
-    maven("https://jitpack.io")
-  }
-}
-
 // build.gradle.kts
 dependencies {
-  implementation("com.github.c0x12c:pageindex-jvm:0.1.0")
+  implementation("com.c0x12c:pageindex-kt:0.1.0")
 }
 ```
 
@@ -303,8 +295,8 @@ When PageIndex builds an index, the tree looks like this:
 ## Architecture
 
 ```
-io.pageindex.api/          # Public interfaces, models, and PageIndexException
-io.pageindex.core/         # Default implementations (internal)
+com.c0x12c.pageindex.api/          # Public interfaces, models, and PageIndexException
+com.c0x12c.pageindex.core/         # Default implementations (internal)
   cache/                   # RegexPatternCache implementations
   chat/                    # Structured LLM chat (JSON-parsed responses)
   detector/                # Structure detection (regex, headers, LLM, regex discovery)

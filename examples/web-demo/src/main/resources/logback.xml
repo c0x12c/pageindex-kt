@@ -5,7 +5,7 @@
         </encoder>
     </appender>
 
-    <logger name="io.pageindex" level="DEBUG"/>
+    <logger name="com.c0x12c.pageindex" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>

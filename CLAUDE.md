@@ -7,8 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 ./gradlew build              # Full build with tests
 ./gradlew test               # Run all tests
-./gradlew test --tests "io.pageindex.core.SomeTest"  # Run a single test class
-./gradlew test --tests "io.pageindex.core.SomeTest.someMethod"  # Run a single test method
+./gradlew test --tests "com.c0x12c.pageindex.core.SomeTest"  # Run a single test class
+./gradlew test --tests "com.c0x12c.pageindex.core.SomeTest.someMethod"  # Run a single test method
 ./gradlew publishToMavenLocal  # Publish to local Maven repo
 ```
 
@@ -26,20 +26,20 @@ PageIndex is a Kotlin/JVM library for LLM-powered hierarchical document indexing
 
 ### Package Layout
 
-- `io.pageindex.api/` — Public interfaces, data models, and `PageIndexException`. All new public interfaces go here.
-- `io.pageindex.api.model/` — Public data models (DocumentTree, ParsedPage, IndexingConfig, etc.).
-- `io.pageindex.core/` — Entry points: `PageIndexBuilder`, `DefaultPageIndexManager`.
-- `io.pageindex.core.indexer/` — Tree building pipeline: `TreeIndexBuilder`, `TreeBuilder`, `NodeSplitter`, `SummaryGenerator`.
-- `io.pageindex.core.retriever/` — Node retrieval: `NodeRetriever`, `DefaultNodeRetriever`, `HybridNodeRetriever`, `CompactTreeSerializer`.
-- `io.pageindex.core.chat/` — Structured LLM chat: `StructuredChatService`, `DefaultStructuredChatService`.
-- `io.pageindex.core.store/` — Persistence: `InMemoryDocumentTreeStore`.
-- `io.pageindex.core.embedding/` — Embedding: `NoOpEmbeddingService`.
-- `io.pageindex.core.detector/` — Structure detection chain.
-- `io.pageindex.core.model/` — Internal data models (not part of public API).
-- `io.pageindex.core.llm/` — `LiteLlmClient` multi-provider LLM client.
-- `io.pageindex.core.prompt/` — Prompt template rendering.
-- `io.pageindex.core.verify/` — TOC verification and fixing.
-- `io.pageindex.core.util/` — JSON parsing, schema hints, token counting.
+- `com.c0x12c.pageindex.api/` — Public interfaces, data models, and `PageIndexException`. All new public interfaces go here.
+- `com.c0x12c.pageindex.api.model/` — Public data models (DocumentTree, ParsedPage, IndexingConfig, etc.).
+- `com.c0x12c.pageindex.core/` — Entry points: `PageIndexBuilder`, `DefaultPageIndexManager`.
+- `com.c0x12c.pageindex.core.indexer/` — Tree building pipeline: `TreeIndexBuilder`, `TreeBuilder`, `NodeSplitter`, `SummaryGenerator`.
+- `com.c0x12c.pageindex.core.retriever/` — Node retrieval: `NodeRetriever`, `DefaultNodeRetriever`, `HybridNodeRetriever`, `CompactTreeSerializer`.
+- `com.c0x12c.pageindex.core.chat/` — Structured LLM chat: `StructuredChatService`, `DefaultStructuredChatService`.
+- `com.c0x12c.pageindex.core.store/` — Persistence: `InMemoryDocumentTreeStore`.
+- `com.c0x12c.pageindex.core.embedding/` — Embedding: `NoOpEmbeddingService`.
+- `com.c0x12c.pageindex.core.detector/` — Structure detection chain.
+- `com.c0x12c.pageindex.core.model/` — Internal data models (not part of public API).
+- `com.c0x12c.pageindex.core.llm/` — `LiteLlmClient` multi-provider LLM client.
+- `com.c0x12c.pageindex.core.prompt/` — Prompt template rendering.
+- `com.c0x12c.pageindex.core.verify/` — TOC verification and fixing.
+- `com.c0x12c.pageindex.core.util/` — JSON parsing, schema hints, token counting.
 
 ### Public Interfaces (api/)
 

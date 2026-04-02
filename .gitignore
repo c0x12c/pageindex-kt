@@ -14,3 +14,7 @@ local.properties
 # Signing keys (for Maven Central publishing)
 *.gpg
 secring.gpg
+
+# Benchmark
+benchmark/output/
+benchmark/data/pdfs/
