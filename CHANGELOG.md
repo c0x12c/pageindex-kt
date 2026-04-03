@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2026-04-03)
+
+- Modify release workflow for Maven Central publishing.
+
 ## 0.1.0 (2025-01-01)
 
 Initial release.
